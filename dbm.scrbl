@@ -9,7 +9,7 @@
 
 @defmodule/this-package[]
 
-This package provides an interface to @link["http://en.wikipedia.org/wiki/Dbm"]{UNIX dbm} databases for PLT Scheme.
+This package provides an interface to @link["http://en.wikipedia.org/wiki/Dbm"]{UNIX dbm} databases for Racket.
 
 @defproc[(dbm? [v any/c])
          boolean?]{
