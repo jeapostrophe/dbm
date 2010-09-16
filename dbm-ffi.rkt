@@ -2,13 +2,27 @@
 (require ffi/unsafe)
 
 (define dbm-lib
-  (ffi-lib "libdbm"))
+  (with-handlers
+      ([exn:fail:filesystem?
+        (λ (e) 
+          (ffi-lib "libgdbm")
+          (ffi-lib "libgdbm_compat"))])
+    (ffi-lib "libdbm")))
+
+(define alternatives
+  `#hasheq([dbm_error . ,void]
+           [dbm_clearerr . ,void]))
+
+(define (get-dbm obj typ)
+  (get-ffi-obj 
+   (symbol->string obj) dbm-lib typ
+   (lambda ()
+     (hash-ref alternatives obj
+               (lambda ()
+                 (error 'dbm-lib "Installed dbm does not provide: ~a" obj))))))
 
 (define-syntax-rule (define-dbm obj typ)
-  (define obj
-    (get-ffi-obj (symbol->string 'obj) dbm-lib typ
-                 (lambda ()
-                   (error 'dbm-lib "Installed dbm does not provide: ~a" 'obj)))))
+  (define obj (get-dbm 'obj typ)))
 
 (define-cpointer-type _DBM)
 (define _mode_t _uint)
@@ -60,7 +74,7 @@ typedef struct {
 
 (define _store_mode_t
   (_enum '(DBM_INSERT DBM_REPLACE)))
-  
+
 ;     int
 ;     dbm_store(DBM *db, datum key, datum content, int store_mode);
 (define-dbm dbm_store

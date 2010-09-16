@@ -2,7 +2,8 @@
 (define name "dbm")
 (define release-notes
   (list
-   '(p "Rackety")))   
+   '(p "GDBM compatibility from Synx")
+   '(p "Rackety")))
 (define repositories
   (list "4.x"))
 (define blurb
