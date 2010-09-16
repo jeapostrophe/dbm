@@ -1,5 +1,5 @@
-#lang scheme
-(require "dbm-ffi.ss")
+#lang racket
+(require "dbm-ffi.rkt")
 
 (define (dbm-open pth)
   (define O_RDWR 2)
@@ -11,7 +11,7 @@
               (bitwise-ior O_RDWR O_CREAT O_SYMLINK)
               432))
   (if the-db
-      (make-dbm the-db)
+      (dbm the-db)
       (error 'dbm-open "Could not open DBM: ~e" pth)))
 
 (define (dbm-close! dbm)
@@ -83,7 +83,7 @@
 (define (dbm-iterate-key dbm pos) (car pos))
 (define (dbm-iterate-value dbm pos) (cdr pos))
 
-(define-struct dbm (ptr)
+(struct dbm (ptr)
   #:property prop:dict
   (vector dbm-ref
           (lambda (dbm key val)

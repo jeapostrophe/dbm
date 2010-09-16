@@ -1,6 +1,5 @@
-#lang scheme
-(require scheme/foreign)
-(unsafe!)
+#lang racket
+(require ffi/unsafe)
 
 (define dbm-lib
   (ffi-lib "libdbm"))

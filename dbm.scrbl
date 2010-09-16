@@ -1,11 +1,11 @@
 #lang scribble/doc
-@(require (planet cce/scheme:4:1/planet)
-          (for-label "main.ss"
+@(require unstable/scribble
+          (for-label "main.rkt"
                      scheme)
           scribble/manual)
 
 @title{dbm}
-@author{@(author+email "Jay McCarthy" "jay@plt-scheme.org")}
+@author{@(author+email "Jay McCarthy" "jay@racket-lang.org")}
 
 @defmodule/this-package[]
 
