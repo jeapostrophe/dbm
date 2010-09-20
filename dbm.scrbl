@@ -1,7 +1,7 @@
 #lang scribble/doc
 @(require unstable/scribble
           (for-label "main.rkt"
-                     scheme)
+                     racket)
           scribble/manual)
 
 @title{dbm}
