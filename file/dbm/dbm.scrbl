@@ -1,13 +1,12 @@
 #lang scribble/doc
-@(require unstable/scribble
-          (for-label "main.rkt"
+@(require (for-label "main.rkt"
                      racket)
           scribble/manual)
 
 @title{dbm}
 @author{@(author+email "Jay McCarthy" "jay@racket-lang.org")}
 
-@defmodule/this-package[]
+@defmodule[file/dbm]
 
 This package provides an interface to @link["http://en.wikipedia.org/wiki/Dbm"]{UNIX dbm} databases for Racket.
 

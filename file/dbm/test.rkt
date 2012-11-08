@@ -1,5 +1,6 @@
-#lang racket
+#lang racket/base
 (require "dbm.rkt"
+         racket/dict
          tests/eli-tester)
 
 ;; Example

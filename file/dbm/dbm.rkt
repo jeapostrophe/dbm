@@ -1,5 +1,8 @@
-#lang racket
-(require "dbm-ffi.rkt")
+#lang racket/base
+(require racket/match
+         racket/dict
+         racket/contract
+         "dbm-ffi.rkt")
 
 (define (dbm-open pth)
   (define O_RDWR 2)
