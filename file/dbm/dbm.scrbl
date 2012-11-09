@@ -1,5 +1,5 @@
 #lang scribble/doc
-@(require (for-label "main.rkt"
+@(require (for-label file/dbm
                      racket)
           scribble/manual)
 
