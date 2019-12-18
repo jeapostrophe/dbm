@@ -34,11 +34,11 @@ typedef struct {
      } datum;
 |#
 (define-cstruct _datum 
-  ([dptr _string]
+  ([dptr _string/utf-8]
    [dsize _int]))
 
 (define (string->datum s)
-  (make-datum s (add1 (string-length s))))
+  (make-datum s (add1 (string-utf-8-length s))))
 (define (datum->string d)
   (datum-dptr d))
 
